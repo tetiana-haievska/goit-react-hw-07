@@ -36,12 +36,12 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "./redux/contactsOps";
-import { selectLoading, selectError } from "./redux/contactsSlice";
-import ContactForm from "./components/ContactForm/ContactForm";
-import ContactList from "./components/ContactList/ContactList";
-import Filter from "../src/components/Filter/Filter";
-import Loader from "./components/Loader/Loader";
+import { fetchContacts } from "../../redux/contactsOps";
+import { selectLoading, selectError } from "../../redux/contactsSlice";
+import ContactForm from "../ContactForm/ContactForm";
+import ContactList from "../ContactList/ContactList";
+import Filter from "../Filter/Filter";
+import Loader from "../Loader/Loader";
 import styles from "./App.module.css";
 
 const App = () => {
