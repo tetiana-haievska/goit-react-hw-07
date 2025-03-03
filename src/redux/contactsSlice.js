@@ -24,6 +24,9 @@ const contactsSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(addContact.fulfilled, (state, action) => {
+        state.items.push(action.payload); 
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
         state.items = state.items.filter(
           (contact) => contact.id !== action.payload
         );
@@ -38,9 +41,11 @@ export const selectError = (state) => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, (state) => state.filters.name],
   (contacts, name) =>
-    contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(name.toLowerCase())
-    )
+    contacts.filter((contact) => {
+      if (!name) return true;
+      return contact.name.toLowerCase().includes(name.toLowerCase());
+    })
 );
 
-export default contactsSlice.reducer;
+export const contactsReducer = contactsSlice.reducer;
+

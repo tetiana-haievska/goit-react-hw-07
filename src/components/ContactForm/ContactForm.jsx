@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addcpntact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contactsOps";
 import { selectContacts } from "../../redux/contactsSlice";
 import styles from "./ContactForm.module.css";
 
@@ -11,13 +11,13 @@ const ContactForm = () => {
   const contacts = useSelector(selectContacts);
 
   const handleSubmit = (e) => {
-    e.preventdefault();
+    e.preventDefault(); // виправлено на e.preventDefault()
     if (
       contacts.some(
         (contact) => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert("${name} is already in contacts");
+      alert(`${name} is already in contacts`); // виправлено alert
       return;
     }
 
@@ -35,6 +35,16 @@ const ContactForm = () => {
         onChange={(e) => setName(e.target.value)}
         required
       />
+      <input
+        type="text"
+        placeholder="Телефон"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        required
+      />
+      <button type="submit">Add Contact</button>
     </form>
   );
 };
+
+export default ContactForm;
