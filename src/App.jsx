@@ -40,7 +40,7 @@ import { fetchContacts } from "./redux/contactsOps";
 import { selectLoading, selectError } from "./redux/contactsSlice";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
-import Filter from "./components/Filter/Filter.jsx";
+import Filter from "../src/components/Filter/Filter";
 import Loader from "./components/Loader/Loader";
 import styles from "./App.module.css";
 
